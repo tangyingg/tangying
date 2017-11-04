@@ -1,0 +1,11 @@
+/*
+ *杩欐槸鍗曠嫭涓篽ello mui鍑嗗鐨勪釜鎬у寲css锛屽彲浠ヨ鐩栨爣鍑唌ui鐨刢ss瀹氫箟锛�
+ * 鍦ㄥ疄闄呴」鐩紑鍙戞椂锛屽缓璁负App鍗曠嫭鍐欎竴涓猚ss鏂囦欢锛屼粠鑰屽疄鐜伴」鐩殑鑷畾涔夌毊鑲ゅ姛鑳斤紱
+ * 
+ * */
+.mui-plus.mui-android header.mui-bar{
+	display: none;
+}
+.mui-plus.mui-android .mui-bar-nav~.mui-content{
+	padding: 0;
+}

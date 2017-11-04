@@ -1,0 +1,79 @@
+* {
+    line-height: 1.6;
+    font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+}
+
+.inputGroup {
+    position: relative;
+    top: 54px;
+    font-size: 16px;
+}
+
+.inputGroup .buttonRow {
+    height: 80px;
+    margin-top: 20px;
+}
+
+.mui-input-row .inputLabel {
+    padding-left: 14px;
+    padding-right: 0px;
+}
+
+.tableCell {
+    text-align: right;
+}
+
+.cellLi {
+    padding: 25px 15px 2px 15px;
+}
+
+.spacW {
+    margin-bottom: 9px;
+    font-size: 16px;
+}
+
+.rowHight {
+    height: 46px !important;
+}
+
+#enter {
+    padding: 10px;
+}
+
+.rowHight label {
+    line-height: 1.6;
+}
+
+.rowHight input {
+    height: 46px;
+}
+
+.locationBase {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    z-index: -1;
+    /*这句解决绝对定位的div随输入框的出现而被顶出新花样*/
+}
+
+.link-area {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+}
+
+#altogether {
+    font-size: 18px;
+}
+
+.locationBase p.renshu {
+    background: #007AFF;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+
+.mui-table-view-cell.mui-active {
+    background-color: #0062CC;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- 默认编码显示 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- 默认浏览器版本 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <!-- 触屏设备兼容性设置 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 宽屏设置 -->
+    <meta name="description" content="Envor HTML5/CSS3 Template">
+    <!-- 默认编码，默认文件形式 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <title>抽抽</title>
+    <meta content="抽你最爱，抽出更多！" name="description">
+    <!-- 兼容性加载JS框架 -->
+    <!-- HTML5 shim for IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]><script src="<?php echo arCfg('PATH.PUBLIC'); ?>js/html5shiv.js"></script><![endif]-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/mui.js"></script>
+    <!-- 加载个人操作css -->
+    <link rel="stylesheet" type="text/css" href="css/mp.css">
+<!--     <link rel="stylesheet" type="text/css" href="<?php echo arCfg('PATH.PUBLIC'); ?>css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/mui.css">
+     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- 文件内加载CSS -->
+ 
+    <!-- 以下layui去掉by ty 为了index中 h3的大小 -->
+<!--     <link rel="stylesheet" href="<?php echo arCfg('PATH.PUBLIC'); ?>lib/layui/css/layui.css"> -->
+
+    <script type="text/javascript" src="lib/layui/layui.js"></script>
+</head>
+    <body>
+    <header class="mui-bar mui-bar-nav">
+    <a href="<?php echo arU('Index/index') ?>" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span
+    ></span></a>
+    <h1 class="mui-title">注册</h1>
+</header>
+<form action="" class="mui-input-group inputGroup" method="post">
+    <div class="mui-input-row rowHight">
+        <label>姓名：</label>
+        <input id="yourName" type="text" name="xingming" placeholder="你的名字">
+    </div>
+    <div class="mui-input-row rowHight">
+        <label>电话：</label>
+        <input id="tel" type="text" name="dianhua" class="mui-input-clear mui-input" placeholder="你的电话">
+    </div>
+    <div class="mui-input-row rowHight">
+        <label class="inputLabel">推荐人电话：</label>
+        <input id="referee" type="text" name="tuijianren" class="mui-input-clear mui-input" placeholder="推荐人电话" >
+    </div>
+    
+    <div class="mui-content-padded buttonRow">
+        <button id='enter' class="mui-btn mui-btn-block mui-btn-primary" type="submit">确认</button>
+    </div>
+        
+   <!--  </div> -->
+</form>
+<div class="link-area locationBase">
+    <h3>人数在线</h3>
+    <a href="huakuai.html"><p class="renshu w100 h100 lh100 auto mt20 mb20" style="border-radius: 100px">{{}} </p></a>
+   <p id="altogether">想你所想，做你所做</p>
+</div>
+<script type="text/javascript">
+// 申明全局变量
+    var yourname = document.getElementById('yourName');
+    var tel = document.getElementById('tel');
+    var referee = document.getElementById('referee');
+
+// 启用键盘enter提交事件
+    document.onkeydown = function(e) {
+        if (!e) e = window.event;
+        if ((e.keyCode || e.which) == 13) {
+            $("#enter").click();
+            yourname.blur();
+            tel.blur();
+            referee.blur();
+            // 这两兄弟不晓得会不会在后面出幺蛾子，暂时没有
+        }
+    }
+// 启用键盘enter提交事件end
+
+// 以下为验证代码
+    $('#enter').click(function() {
+        var yournameVa = document.getElementById('yourName').value;
+        var telVa = document.getElementById('tel').value;
+        var refereeVa = document.getElementById('referee').value;
+        if (!yournameVa) {
+            mui.alert('姓名不能为空','提示',function() {
+                yourname.focus();
+            });
+            return false;
+        }
+
+// 函数-是否为合法账号：2-5个字符
+        function isYourname(str) {
+            var reg = /^[A-Za-z0-9_\-\u4e00-\u9fa5]{2,5}$/;
+            return reg.test(str);
+        }
+//是否为合法账号-调用上面函数
+        if(!isYourname(yournameVa)){
+            mui.alert('姓名必须为2-5个汉字', ' ', function() {
+                yourname.focus();             
+            });
+            return false;
+        }
+
+        if (!telVa) {
+            mui.alert('电话不能为空','提示',function() {
+                tel.focus();
+            });
+            return false;
+        }
+
+// 校验国内手机号码
+        function isTel(str) {
+            var reg = /^0?(13|14|15|18)[0-9]{9}$/;
+            return reg.test(str);
+        }
+
+//本人手机号，国内手机号验证
+        if(!isTel(telVa)){
+            mui.alert('请输入正确的手机号','提示',function () {
+                tel.focus();
+            });         
+            return false;
+        }
+
+//推荐人电话是否为空
+//推荐人电话验证
+        function isReferee(str) {
+            var reg = /^0?(13|14|15|18)[0-9]{9}$/;
+            return reg.test(str);
+        }
+        if (telVa == refereeVa) {
+            mui.alert('不能自己推荐自己哦','',function () {
+                referee.focus();
+            });         
+            return false;   
+        }
+
+    });
+
+</script>
+
+
+
+
+</body>
+
+</html>
