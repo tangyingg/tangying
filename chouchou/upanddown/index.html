@@ -6,9 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<!-- 		<?php ArView::load('mui.css,mui.js',true);?>
-<?php ArView::layout('');?>
-<?php ArView::start();?> -->
 		<link rel="stylesheet" href="css/mui.css">
 	</head>
 
@@ -51,50 +48,29 @@
 					dataType:'json',
 					type:'get',
 					success:function(res){
-						var table = document.body.querySelector('.mui-table-view');
-						count = 2;
-						for (var i in res['data']['result']){
-							var item = res['data']['result'][i];
-							if (document.getElementById('item-' + item['id'])) {
-								continue;
+						setTimeout(function() {
+							var table = document.body.querySelector('.mui-table-view');// 找出body标签下的第一个class为mui-table-view的标签。H5里的类似于document.elementbyid("")但比这个更好用;
+							var cells = document.body.querySelectorAll('.mui-table-view-cell');//同上，找出body标签下的所有class为mui-table-view的标签。
+							for (var i = cells.length, len = i + 3; i < len; i++) {
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cell';
+								// 视图部分关键改这块
+								li.innerHTML = '<div class="mui-card">\
+			页眉，放置标题\
+			<div class="mui-card-header">页眉</div>\
+			内容区\
+			<div class="mui-card-content">内容区</div>\
+			页脚，放置补充信息或支持的操作\
+			<div class="mui-card-footer">页脚</div>\
+		</div><a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+								//下拉刷新，新纪录插到最前面；
+								table.insertBefore(li, table.firstChild);
 							}
-
-							var div_mucard = document.createElement('div');
-                                div_mucard.className = 'mui-card';
-                                div_mucard.innerHTML = '<div id="item-" class="mui-card-header mui-card-media"> \
-                                <img src=""> \
-                                <div class="mui-media-body"> \
-                                    <p>发布于</p>\
-                                </div>\
-                            </div>\
-                            <div class="mui-card-content">\
-                                <img src="" alt="" width="100%">\
-                            </div>\
-                            <div class="mui-card-footer">\
-                                <a class="mui-card-link">人参与</a>\
-                                <a href="Index/" class="mui-card-link">查看</a>\
-                            </div>';
-                            //下拉刷新，新纪录插到最前面；
-                            table.insertBefore(div_mucard, table.firstChild);
-
-						}
-						mui('#pullrefresh').pullRefresh().endPulldownToRefresh();  					
+							mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+						}, 500);
 					}
 				});
-
-
-				/*setTimeout(function() {
-					var table = document.body.querySelector('.mui-table-view');// 找出body标签下的第一个class为mui-table-view的标签。H5里的类似于document.elementbyid("")但比这个更好用;
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');//同上，找出body标签下的所有class为mui-table-view的标签。
-					for (var i = cells.length, len = i + 3; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-						//下拉刷新，新纪录插到最前面；
-						table.insertBefore(li, table.firstChild);
-					}
-					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-				}, 1500);*/
+			
 			}
 			// var count = 0;
 			/**
@@ -105,76 +81,31 @@
                     data: {
                         page: count
                     },
-                        dataType: 'json',//服务器返回json格式数据
-                        type: 'get',//HTTP请求类型
-                        success: function(res){
-                           setTimeout(function() {
-								mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 4)); //参数为true代表没有更多数据了。
-								var table = document.body.querySelector('.mui-table-view');
-								var cells = document.body.querySelectorAll('.mui-table-view-cell');
-								for (var i = cells.length, len = i + 4; i < len; i++) {
-									var li = document.createElement('li');
-									li.className = 'mui-table-view-cell';
-									li.innerHTML = '<div class="mui-card">\
-	页眉，放置标题\
-	<div class="mui-card-header">页眉</div>\
-	内容区\
-	<div class="mui-card-content">内容区</div>\
-	页脚，放置补充信息或支持的操作\
-	<div class="mui-card-footer">页脚</div>\
+                    dataType: 'json',//服务器返回json格式数据
+                    type: 'get',//HTTP请求类型
+                    success: function(res){
+                       setTimeout(function() {
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 4)); //参数为true代表没有更多数据了。
+							var table = document.body.querySelector('.mui-table-view');
+							var cells = document.body.querySelectorAll('.mui-table-view-cell');
+							for (var i = cells.length, len = i + 4; i < len; i++) {
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cell';
+								li.innerHTML = '<div class="mui-card">\
+页眉，放置标题\
+<div class="mui-card-header">页眉</div>\
+内容区\
+<div class="mui-card-content">内容区</div>\
+页脚，放置补充信息或支持的操作\
+<div class="mui-card-footer">页脚</div>\
 </div><a class="mui-navigate-right">Item ' + (i + 1) + '</a>';// 此处插入HTML代码
-									table.appendChild(li);
-								}
-							}, 1500);
-						}
-
-
-
-/*                            mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 3)); //参数为true代表没有更多数据了。
-                            console.log(res.data.total_page)
-                            var table = document.body.querySelector('.mui-table-view');
-                            // var cells = document.body.querySelectorAll('.mui-table-view-cell');
-                            for (var i in res['data']['result']) {
-                                var item = res['data']['result'][i];
-
-                                var div_mucard = document.createElement('div');
-                                div_mucard.className = 'mui-card';
-                                div_mucard.innerHTML = ' <div id="item-" class="mui-card-header mui-card-media"> \
-                                <img src=""> \
-                                <div class="mui-media-body"> \
-                                    <p>发布于 </p>\
-                                </div>\
-                            </div>\
-                            <div class="mui-card-content">\
-                                <img src="" alt="" width="100%" style="height: 250px;">\
-                            </div>\
-                            <div class="mui-card-footer">\
-                                <a class="mui-card-link">人参与</a>\
-                                <a href="Index/" class="mui-card-link">查看</a>\
-                            </div>';
-                                //下拉刷新，新纪录插到最前面；
-                                // table.insertBefore(div_mucard, table.firstChild);
-                                table.appendChild(div_mucard);
-
-                            }
-                        }*/
-                    });
-
-}
-
-
-/*				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 20; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-						table.appendChild(li);
+								table.appendChild(li);
+							}
+						}, 1500);
 					}
-				}, 1500);
-			}*/
+                });
+			}
+			
 			if (mui.os.plus) {
 				mui.plusReady(function() {
 					setTimeout(function() {
