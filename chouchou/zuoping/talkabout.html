@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">话题讨论</h1>
+		</header>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-chevron">
+					
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script>
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						// auto: true,此处只要为true，初始化默认下拉一次。
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						// auto: false,
+						callback: pullupRefresh
+					}
+				}
+			});
+			var count = 1;
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				count = 1;
+				mui.ajax('shuju.txt',{
+					data:{
+						page:count
+					},
+					dataType:'json',
+					type:'get',
+					success:function(res){
+						setTimeout(function() {
+							var table = document.body.querySelector('.mui-table-view');// 找出body标签下的第一个class为mui-table-view的标签。H5里的类似于document.elementbyid("")但比这个更好用;
+							var cells = document.body.querySelectorAll('.mui-table-view-cells');//同上，找出body标签下的所有class为mui-table-view的标签。
+							for (var i = cells.length, len = i + 3; i < len; i++) {
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cells';
+								// 视图部分关键改这块
+								li.innerHTML = '<div class="mui-card">\
+												<div class="mui-card-header mui-card-media">\
+					<img src="img/give8.jpg" />\
+					<div class="mui-media-body">\
+						小' + (i + 1) + '\
+						<p>发表于 ' + CurentTime() + '</p>\
+					</div>\
+				</div>\
+				<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(img/give4.jpg)"></div>\
+				<div class="mui-card-content">\
+					<div class="mui-card-content-inner">\
+						<p>图片描述：天凉好个秋</p>\
+						<p style="color: #333;">今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...</p>\
+					</div>\
+				</div>\
+				<div class="mui-card-footer">\
+					<a class="mui-card-link">赞(6)</a>\
+					<a class="mui-card-link">评论(5)</a>\
+				</div>\
+			</div></a>';
+								//下拉刷新，新纪录插到最前面；
+								table.insertBefore(li, table.firstChild);
+							}
+							mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+						}, 500);
+					}
+				});
+			
+			}
+			// var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				mui.ajax('shuju.txt',{
+                    data: {
+                        page: count
+                    },
+                    dataType: 'json',//服务器返回json格式数据
+                    type: 'get',//HTTP请求类型
+                    success: function(res){
+                       setTimeout(function() {
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 4)); //参数为true代表没有更多数据了。
+							var table = document.body.querySelector('.mui-table-view');
+							var cells = document.body.querySelectorAll('.mui-table-view-cells');
+							for (var i = cells.length, len = i + 4; i < len; i++) {
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cells';
+								li.innerHTML = '<div class="mui-card">\
+												<div class="mui-card-header mui-card-media">\
+					<img src="img/give1.jpg" />\
+					<div class="mui-media-body">\
+						小' + (i + 1) + '\
+						<p>发表于 ' + CurentTime() + '</p>\
+					</div>\
+				</div>\
+				<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(img/give3.jpg)"></div>\
+				<div class="mui-card-content">\
+					<div class="mui-card-content-inner">\
+						<p>图片描述：天凉好个秋</p>\
+						<p style="color: #333;">今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...</p>\
+					</div>\
+				</div>\
+				<div class="mui-card-footer">\
+					<a class="mui-card-link">赞(6)</a>\
+					<a class="mui-card-link">评论(5)</a>\
+				</div>\
+			</div></a>';// 此处插入HTML代码
+								table.appendChild(li);
+							}
+						}, 1500);
+					}
+                });
+			}
+			
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+// 获取当前日期函数
+			function CurentTime() { 
+		        var now = new Date();
+		       
+		        var year = now.getFullYear();       //年
+		        var month = now.getMonth() + 1;     //月
+		        var day = now.getDate();            //日
+		       
+		        var hh = now.getHours();            //时
+		        var mm = now.getMinutes();          //分
+		       
+		        var clock = year + "-";
+		       
+		        if(month < 10)
+		            clock += "0";
+		       
+		        clock += month + "-";
+		       
+		        if(day < 10)
+		            clock += "0";
+		           
+		        clock += day + " ";
+		       
+		        if(hh < 10)
+		            clock += "0";
+		           
+		        clock += hh + ":";
+		        if (mm < 10) clock += '0'; 
+		        clock += mm; 
+		        return(clock); 
+		    } 
+		</script>
+	</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+		<style>
+			html,
+			body {
+				/*background-color: #efeff4;*/
+				font-family: '微软雅黑';
+				line-height: 1.6;
+			}
+			p {
+				text-indent: 22px;
+			}
+/* 			span.mui-icon {
+	font-size: 14px;
+	color: #007aff;
+	margin-left: -15px;
+	padding-right: 10px;
+} */
+.a1 {
+    color: #ffb16c;
+    font-size: 15px;
+    margin-left: 4px;
+}
+			.mui-off-canvas-left {
+				color: #fff;
+			}
+			.title {
+				margin: 35px 15px 10px;
+			}
+			.title+.content {
+				margin: 10px 15px 35px;
+				color: #bbb;
+				text-indent: 1em;
+				font-size: 14px;
+				line-height: 24px;
+			}
+			input {
+				color: #000;
+			}
+			.iconst{
+				
+			}
+		</style>
+	</head>
+
+	<body>
+	<!-- body内分为侧滑菜单窗口和主界面部分 -->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-scalable"><!-- 此处加上mui-scalable类，讲平滑改为整体滑动 -->
+			<!--侧滑菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left"><!-- 此处的left表示侧滑栏为左滑栏，若将其改为right则变为右边栏侧滑栏 -->
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="title">导航</div>				
+						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">
+									<span class="mui-icon mui-icon-contact iconst"></span>
+									<span class="mui-navigate-right a1">首页</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">
+									<span class="mui-icon mui-icon-starhalf iconst"></span>
+									<span class="mui-navigate-right a1">个人主页</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">
+									<span class="mui-icon mui-icon-chatbubble iconst"></span>
+									<span class="mui-navigate-right a1">话题讨论</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">
+									<span class="mui-icon mui-icon-email iconst"></span>
+                                    <span class="mui-navigate-right a1">消息</span>
+                                    <span class="mui-badge mui-badge-danger" style="background-color: #F43530;">1</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">
+									<span class="mui-icon mui-icon-chatboxes iconst"></span>
+                                    <span class="mui-navigate-right a1">精品问答</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="#" class="mui-navigate-right">
+									<span class="mui-icon mui-icon-gear iconst"></span>
+                                    <span class="mui-navigate-right a1">设置</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!--主界面部分-->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right">关闭</a>
+					<h1 class="mui-title">div模式右滑菜单</h1>
+				</header>
+				 <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+					<!--<div class="mui-scroll">
+						<div class="mui-content-padded">
+							<p>这是<span class="mui-icon mui-icon-bars"></span> 图标； 3、通过JS API触发（例如点击如下蓝色按钮体验）；
+								<span class="android-only">4、Android手机按menu键；</span>
+							</p>
+							<p style="padding: 5px 20px;margin-bottom: 5px;">
+								<button id="offCanvasShow" type="button" class="mui-btn mui-btn-primary mui-btn-block" style="padding: 10px;">
+									显示侧滑菜单
+								</button>
+							</p>
+							<p>侧滑菜单的移动动画，支持多种效果，切换如下选项体验不同动画效果：</p>
+				
+						</div>
+				
+						<form class="mui-input-group" style="margin-bottom: 15px;">
+							<div class="mui-input-row mui-radio">
+								<label>主界面移动、菜单不动</label>
+								<input name="style" type="radio" checked="" value="main-move">
+							</div>
+							<div class="mui-input-row mui-radio">
+								<label>主界面不动、菜单移动</label>
+								<input name="style" type="radio" value="menu-move">
+							</div>
+							<div class="mui-input-row mui-radio mui-hidden" id="move-togger">
+								<label>整体移动</label>
+								<input name="style" type="radio" value="all-move">
+							</div>
+							<div class="mui-input-row mui-radio">
+								<label>缩放式侧滑（类手机QQ）</label>
+								<input name="style" type="radio" value="main-move-scalable">
+							</div>
+						</form>
+				
+					</div>-->
+				</div> 
+				<!-- off-canvas backdrop -->
+				<!-- <div class="mui-off-canvas-backdrop"></div> -->
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			// 以下三行代码用于解决mui框架里a标签不跳转的bug
+			mui('body').on('tap','a',function(){
+				window.top.location.href=this.href;
+			});
+		</script>
+	</body>
+
+</html>

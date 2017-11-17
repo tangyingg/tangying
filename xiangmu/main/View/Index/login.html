@@ -1,40 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <!-- 默认编码显示 -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- 默认浏览器版本 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=9" />
-    <!-- 触屏设备兼容性设置 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 宽屏设置 -->
-    <meta name="description" content="Envor HTML5/CSS3 Template">
-    <!-- 默认编码，默认文件形式 -->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-
-    <title>抽抽</title>
-    <meta content="抽你最爱，抽出更多！" name="description">
-    <!-- 兼容性加载JS框架 -->
-    <!-- HTML5 shim for IE8 support of HTML5 elements -->
-    <!--[if lt IE 9]><script src="<?php echo arCfg('PATH.PUBLIC'); ?>js/html5shiv.js"></script><![endif]-->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/mui.js"></script>
-    <!-- 加载个人操作css -->
-    <link rel="stylesheet" type="text/css" href="css/mp.css">
-<!--     <link rel="stylesheet" type="text/css" href="<?php echo arCfg('PATH.PUBLIC'); ?>css/style.css"> -->
-    <link rel="stylesheet" type="text/css" href="css/mui.css">
-     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <!-- 文件内加载CSS -->
- 
-    <!-- 以下layui去掉by ty 为了index中 h3的大小 -->
-<!--     <link rel="stylesheet" href="<?php echo arCfg('PATH.PUBLIC'); ?>lib/layui/css/layui.css"> -->
-
-    <script type="text/javascript" src="lib/layui/layui.js"></script>
-</head>
-    <body>
-    <header class="mui-bar mui-bar-nav">
+<header class="mui-bar mui-bar-nav">
     <a href="<?php echo arU('Index/index') ?>" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span
     ></span></a>
     <h1 class="mui-title">注册</h1>
@@ -57,12 +21,12 @@
         <button id='enter' class="mui-btn mui-btn-block mui-btn-primary" type="submit">确认</button>
     </div>
         
-   <!--  </div> -->
+    </div>
 </form>
 <div class="link-area locationBase">
-    <h3>人数在线</h3>
-    <a href="huakuai.html"><p class="renshu w100 h100 lh100 auto mt20 mb20" style="border-radius: 100px">{{}} </p></a>
-   <p id="altogether">想你所想，做你所做</p>
+    <h3>踏浪人数</h3>
+    <p class="renshu w100 h100 lh100 auto mt20 mb20" style="border-radius: 100px"><?php echo $totalCount; ?> </p>
+   <p id="altogether">祝你浪得愉快浪得开心</p>
 </div>
 <script type="text/javascript">
 // 申明全局变量
@@ -143,12 +107,25 @@
         }
 
     });
+    // $('#altogether').click(function() {
+    //     var btnArray = ['确定', '取消'];
+    //     mui.prompt('请输入管理员密码：', '', '提示', btnArray, function(e) {
+    //         // 这个e.value搞不懂，形参还是很不明白
+    //         if (e.index == 0){
+    //             if (e.value == 123456) { 
+                   
+    //                 location.href = "<?php echo arU('Index/list'); ?>";
+    //             }else{
+    //                 mui.alert('密码错误！','',function () {
+    //                     // focus();如果此处要聚焦到输入框怎么写？
+    //                     return false;
+    //                 });  
+    //             }
+                           
+    //         }else{                    
+    //             return false;
+    //         }              
+    //     });
 
+    // })
 </script>
-
-
-
-
-</body>
-
-</html>

@@ -1,0 +1,26 @@
+<header class="mui-bar mui-bar-nav" id="header">
+    <a href="<?php echo arU('Index/index') ?>" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span
+    ></span></a>
+        <!-- <a id="popover-menu" ng-if="showmenu === true" class="mui-action-menu mui-icon mui-icon-more mui-pull-right" href="#topPopover"></a> -->
+    <h1 id="title" class="mui-title"> 名&nbsp;&nbsp;单</h1>
+</header>
+<div class="mui-content">
+    <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+        <?php for($i=0; $i<count($pollings);$i++)
+            { ?>
+        <li class="mui-table-view-cell cellLi">
+            <div class="mui-table">
+             <!-- mui-col-xs-10 mui-col-xs-2 mui-text-right mui-table-cell-->
+                <div class="mui-media-body">
+                    <h3 class="spacW">申请人：<?php echo $pollings[$i]['name'] ;?></h3>
+                    <h3 class="spacW">电话：<?php echo $pollings[$i]['tel'] ;?></h3>
+                    <p class="spacW">推荐人电话：<?php echo $pollings[$i]['refereetel'] ;?></p>
+                </div>
+                <div class="tableCell">
+                    <span class="mui-h5"><?php echo $pollings[$i]['datetime'] ;?></span>
+                </div>
+            </div>
+        </li>
+        <?php }?> 
+    </ul>
+</div>
