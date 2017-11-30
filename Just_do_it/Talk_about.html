@@ -19,7 +19,29 @@
 			<div class="mui-scroll">
 				<!--数据列表-->
 				<ul class="mui-table-view mui-table-view-chevron">
-					
+					<!-- 以下代码已被动态的加载到了窗口中 
+					<a href="https://www.baidu.com/">
+						<div class="mui-card">
+							<div class="mui-card-header mui-card-media">
+								<img src="img/give8.jpg" />
+								<div class="mui-media-body">
+									小' + (i + 1) + '
+									<p>发表于 ' + CurentTime() + '</p>
+								</div>
+							</div>
+							<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(img/give4.jpg)"></div>
+							<div class="mui-card-content">
+								<div class="mui-card-content-inner">
+									<p>图片描述：天凉好个秋</p>
+									<p style="color: #333;">今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...</p>
+								</div>
+							</div>
+							<div class="mui-card-footer">
+								<a class="mui-card-link">赞(6)</a>
+								<a class="mui-card-link">评论(5)</a>
+							</div>
+						</div>
+					</a> -->
 				</ul>
 			</div>
 		</div>
@@ -56,11 +78,13 @@
 							var table = document.body.querySelector('.mui-table-view');// 找出body标签下的第一个class为mui-table-view的标签。H5里的类似于document.elementbyid("")但比这个更好用;
 							var cells = document.body.querySelectorAll('.mui-table-view-cells');//同上，找出body标签下的所有class为mui-table-view的标签。
 							for (var i = cells.length, len = i + 3; i < len; i++) {
+								// innerHTML = '<a href="https://www.baidu.com/">';
 								var li = document.createElement('li');
+								
 								li.className = 'mui-table-view-cells';
 								// 视图部分关键改这块
 								li.innerHTML = '<div class="mui-card">\
-												<div class="mui-card-header mui-card-media">\
+												<a href="detail.html"><div class="mui-card-header mui-card-media">\
 					<img src="img/give8.jpg" />\
 					<div class="mui-media-body">\
 						小' + (i + 1) + '\
@@ -73,12 +97,12 @@
 						<p>图片描述：天凉好个秋</p>\
 						<p style="color: #333;">今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...</p>\
 					</div>\
-				</div>\
+				</div></a>\
 				<div class="mui-card-footer">\
 					<a class="mui-card-link">赞(6)</a>\
 					<a class="mui-card-link">评论(5)</a>\
 				</div>\
-			</div></a>';
+			</div>';
 								//下拉刷新，新纪录插到最前面；
 								table.insertBefore(li, table.firstChild);
 							}
@@ -105,10 +129,11 @@
 							var table = document.body.querySelector('.mui-table-view');
 							var cells = document.body.querySelectorAll('.mui-table-view-cells');
 							for (var i = cells.length, len = i + 4; i < len; i++) {
-								var li = document.createElement('li');
+								// innerHTML = '<a href="https://www.baidu.com/">';
+								var li = document.createElement('li');							
 								li.className = 'mui-table-view-cells';
 								li.innerHTML = '<div class="mui-card">\
-												<div class="mui-card-header mui-card-media">\
+												<a href="https://www.baidu.com/"><div class="mui-card-header mui-card-media">\
 					<img src="img/give1.jpg" />\
 					<div class="mui-media-body">\
 						小' + (i + 1) + '\
@@ -121,12 +146,12 @@
 						<p>图片描述：天凉好个秋</p>\
 						<p style="color: #333;">今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...今天是个好天气，约吗...</p>\
 					</div>\
-				</div>\
+				</div></a>\
 				<div class="mui-card-footer">\
 					<a class="mui-card-link">赞(6)</a>\
 					<a class="mui-card-link">评论(5)</a>\
 				</div>\
-			</div></a>';// 此处插入HTML代码
+			</div>';// 此处插入HTML代码
 								table.appendChild(li);
 							}
 						}, 1500);
@@ -177,6 +202,9 @@
 		        clock += mm; 
 		        return(clock); 
 		    } 
+		    // 以下语句用于解决mui框架里a标签不跳转的方案
+		    mui('body').on('tap','a',function(){document.location.href=this.href;});  
+		    // 副作用是暂和评论也会跳转，待阻止???????
 		</script>
 	</body>
 </html>
