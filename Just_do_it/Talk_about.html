@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>话题讨论</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -45,7 +45,7 @@
 				</ul>
 			</div>
 		</div>
-		<script src="js/mui.min.js"></script>
+		<script src="js/mui.min.js"></script>		
 		<script>
 			mui.init({
 				pullRefresh: {
@@ -204,7 +204,9 @@
 		    } 
 		    // 以下语句用于解决mui框架里a标签不跳转的方案
 		    mui('body').on('tap','a',function(){document.location.href=this.href;});  
+		    // 另外的副作用是返回键失灵
 		    // 副作用是暂和评论也会跳转，待阻止???????
 		</script>
+
 	</body>
 </html>
