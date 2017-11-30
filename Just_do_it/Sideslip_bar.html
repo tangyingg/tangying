@@ -48,14 +48,48 @@
 			.iconst{
 				
 			}
+			.touxiangbox{
+				width: 100%;
+				height: 12rem;
+				background: url(img/timgg.jpg) no-repeat;
+				background-size: cover;
+
+			}
+			.touxiang{
+				width: 8rem;
+				height: 8rem;
+				border-radius: 50%;
+				/*background: #000;*/
+
+				margin: 0 auto;
+				/*垂直居中-适用于不知道确定外框大小时*/
+				position: relative;
+      			top: 44%;/*此处改为50%，则为垂直居中*/
+      			transform: translateY(-50%);
+      			overflow: hidden;
+			}
+			.touxiang img{
+				width: 8rem;
+				height: 8rem;
+			}
+			.height100{height: 100%;}
+			.touxiangbox .userName{
+				color: #fff;
+			    font-size: 16px;
+			    text-align: center;
+			    margin-top: 24px;
+			}
+			.BasicInformation{text-align: right;}
 		</style>
 	</head>
 
 	<body>
 	<!-- body内分为侧滑菜单窗口和主界面部分 -->
-		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-scalable"><!-- 此处加上mui-scalable类，讲平滑改为整体滑动 -->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-scalable"><!-- 
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-scalable mui-active" data-offcanvas="3">此处加上mui-scalable类，讲平滑改为整体滑动 -->
 			<!--侧滑菜单部分-->
-			<aside id="offCanvasSide" class="mui-off-canvas-left"><!-- 此处的left表示侧滑栏为左滑栏，若将其改为right则变为右边栏侧滑栏 -->
+			<aside id="offCanvasSide" class="mui-off-canvas-left" ><!-- 
+			<aside id="offCanvasSide" class="mui-off-canvas-right mui-transitioning mui-active" style="visibility: visible; transform-origin: 200% center 0px; opacity: 1; transform: translate3d(0px, 0px, 0px) scale(1); z-index: 0;">此处的left表示侧滑栏为左滑栏，若将其改为right则变为右边栏侧滑栏 -->
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
 					<div class="mui-scroll">
 						<div class="title">导航</div>				
@@ -105,11 +139,81 @@
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right">关闭</a>
-					<h1 class="mui-title">div模式右滑菜单</h1>
+					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right">登陆|注册</a>
+					<h1 class="mui-title">个人主页</h1>
 				</header>
-				 <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
-					<!--<div class="mui-scroll">
+				<div class="mui-content height100">
+					<div class="touxiangbox">
+						<div class="touxiang">
+							<img src="img/hahah.jpg"><!--  width="80px" height="80px" -->
+							
+						</div>
+						<div class="userName">喜洋洋</div>
+
+					</div>
+					<div class="BasicInformation">
+						签到 &nbsp;+1&nbsp;&nbsp;&nbsp;
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我收到的礼物
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我送出的礼物
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我的浏览历史
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我的好友
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我的回复
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								设置
+							</a>
+						</li>
+					</ul>
+					<div class="title"></div>
+					<ul class="mui-table-view">
+					
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我的浏览历史
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我的好友
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								我的回复
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								设置
+							</a>
+						</li>
+					</ul>
+
+				</div>
+				<!-- <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
 						<div class="mui-content-padded">
 							<p>这是<span class="mui-icon mui-icon-bars"></span> 图标； 3、通过JS API触发（例如点击如下蓝色按钮体验）；
 								<span class="android-only">4、Android手机按menu键；</span>
@@ -142,8 +246,8 @@
 							</div>
 						</form>
 				
-					</div>-->
-				</div> 
+					</div>
+				</div> -->
 				<!-- off-canvas backdrop -->
 				<!-- <div class="mui-off-canvas-backdrop"></div> -->
 			</div>
