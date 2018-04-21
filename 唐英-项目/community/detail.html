@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>详情展开</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta   http-equiv="Expires"   CONTENT="0">
+		<meta   http-equiv="Cache-Control"   CONTENT="no-cache">
+		<meta   http-equiv="Pragma"   CONTENT="no-cache">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<style type="text/css">
+			.mui-content .expand{
+				margin: 10px 0px;
+				box-shadow: none;
+			}
+			.right0{
+				text-align: right;
+			}
+		</style>
+	</head>
+
+	<body style="background: #fff">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">详情展开</h1>
+		</header>
+		<!--下拉刷新容器-->
+		<div class="mui-content">
+			<div class="mui-card expand">
+				<div class="mui-card-header mui-card-media">
+					<img src="img/give8.jpg" />
+					<div class="mui-media-body">
+						<h3>标题每次请求的url后面的参数不一样
+						</h3>	
+					</div>
+				</div>
+				<div class="mui-card-content">
+					<img src="img/give4.jpg" alt width="100%">
+				</div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<p>图片描述：天凉好个秋</p>
+						<p style="color: #333;text-indent: 25px;">浏览器是根据url来保存网络请求的缓存的。所以，可以通过cache false的xmlhttprequest请求来覆盖掉缓存的内容，这需要你知道需要替换缓存的所有URL。
+其它域名下的缓存是没有权限清理的。说明：HTTP头信息“Expires”和“Cache-Control”为应用程序服务器提供了一个控制浏览器和代理服务器上缓存的机制。HTTP头信息Expires告诉代理服务器它的缓存页面何时将过期。HTTP1.1规范中新定义的头信息Cache-Control可以通知浏览器不缓存任何页面。当点击后退按钮时，浏览器重新访问服务器已获取页面。如下是使用Cache-Control的基本方法：
+　　1) no-cache:强制缓存从服务器上获取新的页面
+　　2) no-store: 在任何环境下缓存不保存任何页面
+　　HTTP1.0规范中的Pragma:no-cache等同于HTTP1.1规范中的Cache-Control:no-cache，同样可以包含在头信息中。
+（2） 在需要打开的url后面增加一个随机的参数：
+增加参数前：url=test/test.jsp
+增加参数后：url=test/test.jsp?ranparam=random()
+说明：因为每次请求的url后面的参数不一样，相当于请求的是不同的页面，用这样的方法来曲线救国，清除缓存。</p>
+					</div>
+					<p class="right0">小' + (i + 1) + '&nbsp;&nbsp;&nbsp;&nbsp;</p>
+					<p class="right0">发表于 ' + CurentTime() + '&nbsp;&nbsp;&nbsp;&nbsp;</p>
+				</div>
+			</div>
+ 			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="title">
+						<p>小姐姐：</p>
+						今天是个好天气
+					</div>
+					<p class="right0">发表于2017-11-30</p>						
+				</li>
+
+				<li class="mui-table-view-cell">
+					<div class="title">
+						<p>小姐姐：</p>
+						写得好好的鞋写得好好的鞋写得好好的鞋写得好好的鞋写得好好的鞋
+					</div>
+					<p class="right0">发表于2017-11-30</p>					
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+</html>
